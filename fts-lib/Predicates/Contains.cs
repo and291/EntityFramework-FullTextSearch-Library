@@ -1,6 +1,7 @@
 ﻿using System.Text.RegularExpressions;
+using fts_lib.Model;
 
-namespace fts_lib
+namespace fts_lib.Predicates
 {
     public interface IContains { }
 

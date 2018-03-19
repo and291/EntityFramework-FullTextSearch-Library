@@ -2,7 +2,7 @@
 using System.Data;
 using System.Data.Common;
 
-namespace fts_lib
+namespace fts_lib.Model
 {
     public abstract class Rewriter : Parent
     {

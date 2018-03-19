@@ -1,4 +1,4 @@
-﻿namespace fts_lib
+﻿namespace fts_lib.Model
 {
     public abstract class FtsParameter : Parent
     {

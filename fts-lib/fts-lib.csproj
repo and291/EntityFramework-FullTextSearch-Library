@@ -47,15 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contains.cs" />
-    <Compile Include="Freetext.cs" />
+    <Compile Include="Predicates\Contains.cs" />
+    <Compile Include="Predicates\Freetext.cs" />
     <Compile Include="FtsInterceptor.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="FtsParameter.cs" />
-    <Compile Include="Parent.cs" />
+    <Compile Include="Model\FtsParameter.cs" />
+    <Compile Include="Model\Parent.cs" />
     <Compile Include="Prefixes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rewriter.cs" />
+    <Compile Include="Model\Rewriter.cs" />
     <Compile Include="ValueWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
