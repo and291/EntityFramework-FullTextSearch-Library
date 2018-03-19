@@ -29,8 +29,7 @@ namespace fts_lib
 
         protected virtual string RewriteParameterValue(string value)
         {
-            value = value.Replace(Prefix, ""); // remove prefix we added n linq query
-            return value.Substring(1, value.Length - 2); // remove %% escaping by linq translator from string.Contains to sql LIKE
+            return ValueWrapper.Unwrap(Prefix, value);
         }
 
         protected abstract string RewriteCommandText(string commandText, string parameterName);

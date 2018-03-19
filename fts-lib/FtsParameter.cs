@@ -11,7 +11,7 @@
 
         public override string ToString()
         {
-            return $"\"{Prefix}{Search}\"";
+            return ValueWrapper.Wrap(Prefix, Search);
         }
     }
 }
