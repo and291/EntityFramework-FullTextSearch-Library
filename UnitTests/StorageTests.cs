@@ -1,10 +1,9 @@
 ﻿using fts_lib;
-using fts_lib.Model;
-using fts_lib.Predicates;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Data.SqlClient;
 using System.Linq;
+using fts_lib.Rewriters;
 
 namespace UnitTests
 {

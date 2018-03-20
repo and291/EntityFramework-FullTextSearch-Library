@@ -1,7 +1,6 @@
-﻿using fts_lib.Model;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
-namespace fts_lib.Predicates
+namespace fts_lib.Rewriters
 {
     public class Freetext : Rewriter
     {

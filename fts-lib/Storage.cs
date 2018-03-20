@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
-using fts_lib.Model;
-using fts_lib.Predicates;
+using fts_lib.Rewriters;
 
 namespace fts_lib
 {

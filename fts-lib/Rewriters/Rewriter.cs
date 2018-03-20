@@ -2,7 +2,7 @@
 using System.Data;
 using System.Data.Common;
 
-namespace fts_lib.Model
+namespace fts_lib.Rewriters
 {
     public abstract class Rewriter
     {
