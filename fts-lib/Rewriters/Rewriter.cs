@@ -2,25 +2,20 @@
 using System.Data;
 using System.Data.Common;
 
-namespace fts_lib.Model
+namespace fts_lib.Rewriters
 {
     public abstract class Rewriter
     {
         public string Prefix { get; }
-        public Type Type { get; }
 
-        protected Rewriter(string prefix, Type type)
+        protected Rewriter(string prefix)
         {
             Prefix = prefix;
-            Type = type;
-
-            //if (!typeof(Rewriter).GetInterfaces().Contains(type))
-              //  throw new ArgumentException();
         }
 
         public void Rewrite(DbCommand command, DbParameter parameter)
         {
-            var value = RewriteParameterValue((string)parameter.Value);
+            var value = Unwrap((string)parameter.Value);
 
             parameter.Size = value.Length;
             parameter.DbType = DbType.AnsiStringFixedLength;
@@ -34,7 +29,12 @@ namespace fts_lib.Model
             }
         }
 
-        protected virtual string RewriteParameterValue(string value)
+        public string Wrap(string value)
+        {
+            return ValueWrapper.Wrap(Prefix, value);
+        }
+
+        protected virtual string Unwrap(string value)
         {
             return ValueWrapper.Unwrap(Prefix, value);
         }

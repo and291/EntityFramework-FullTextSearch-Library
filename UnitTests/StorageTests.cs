@@ -1,10 +1,9 @@
 ﻿using fts_lib;
-using fts_lib.Model;
-using fts_lib.Predicates;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Data.SqlClient;
 using System.Linq;
+using fts_lib.Rewriters;
 
 namespace UnitTests
 {
@@ -41,9 +40,9 @@ namespace UnitTests
             //TODO подумать над проверкой любого числа реврайтеров
             const string searchQuery = "search query";
             Assert.IsInstanceOfType(
-                FindRewriter(new Contains(searchQuery).ToString()), typeof(RewriterContains));
+                FindRewriter(new Contains().Wrap(searchQuery)), typeof(Contains));
             Assert.IsInstanceOfType(
-                FindRewriter(new Freetext(searchQuery).ToString()), typeof(RewriterFreetext));
+                FindRewriter(new Freetext().Wrap(searchQuery)), typeof(Freetext));
             Assert.IsNull(FindRewriter(searchQuery));
 
             Assert.ThrowsException<ArgumentNullException>(() => Storage.Instance.FindRewriter(null));
@@ -53,17 +52,6 @@ namespace UnitTests
         {
             var parameter = new SqlParameter { Value = parameterValue };
             return Storage.Instance.FindRewriter(parameter);
-        }
-
-        [TestMethod]
-        public void GetCorrectPrefixForType()
-        {
-            var rewriters = Storage.Instance.ActiveRewriters;
-            foreach (var rewriter in rewriters)
-            {
-                var foundPrefix = Storage.Instance.GetPrefixForType(rewriter.Type);
-                Assert.AreEqual(rewriter.Prefix, foundPrefix);
-            }
         }
     }
 }

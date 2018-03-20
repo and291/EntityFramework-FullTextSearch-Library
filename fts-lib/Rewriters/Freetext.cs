@@ -1,19 +1,12 @@
-﻿using System;
-using System.Text.RegularExpressions;
-using fts_lib.Model;
+﻿using System.Text.RegularExpressions;
 
-namespace fts_lib.Predicates
+namespace fts_lib.Rewriters
 {
-    public class Freetext : FtsParameter
+    public class Freetext : Rewriter
     {
-        public Freetext(string search) : base(search)
-        {
-        }
-    }
+        public static string PrefixFreetext => "-FTSFREETEXTPREFIX-";
 
-    public class RewriterFreetext : Rewriter
-    {
-        public RewriterFreetext(string prefix, Type type) : base(prefix, type)
+        public Freetext() : base(PrefixFreetext)
         {
         }
 

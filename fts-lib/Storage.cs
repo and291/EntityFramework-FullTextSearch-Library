@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
-using fts_lib.Model;
-using fts_lib.Predicates;
+using fts_lib.Rewriters;
 
 namespace fts_lib
 {
@@ -17,8 +16,8 @@ namespace fts_lib
         {
             ActiveRewriters = new List<Rewriter>
             {
-                new RewriterContains(prefix:"-FTSCONTAINSPREFIX-", type:typeof(Contains)),
-                new RewriterFreetext(prefix:"-FTSFREETEXTPREFIX-", type:typeof(Freetext))
+                new Contains(),
+                new Freetext()
             };
         }
 
@@ -28,19 +27,6 @@ namespace fts_lib
 
             return ActiveRewriters
                 .FirstOrDefault(item => ((string)parameter.Value).StartsWith($"\"{item.Prefix}"));
-        }
-
-        //public string GetPrefixByImplementedInterface(Type type)
-        //{
-        //    if (type == null) throw new ArgumentNullException(nameof(type));
-        //    return ActiveRewriters.First(x => type.GetInterfaces().Contains(x.Type)).Prefix;
-        //}
-
-        public string GetPrefixForType(Type type)
-        {
-            if (type == null) throw new ArgumentNullException(nameof(type));
-
-            return ActiveRewriters.First(x => x.Type == type).Prefix;
         }
     }
 }
