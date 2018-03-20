@@ -3,11 +3,11 @@ using System.Text.RegularExpressions;
 
 namespace fts_lib.Predicates
 {
-    public class RewriterContains : Rewriter
+    public class Contains : Rewriter
     {
         public static string PrefixContains => "-FTSCONTAINSPREFIX-";
 
-        public RewriterContains() : base(PrefixContains)
+        public Contains() : base(PrefixContains)
         {
         }
 

@@ -3,11 +3,11 @@ using System.Text.RegularExpressions;
 
 namespace fts_lib.Predicates
 {
-    public class RewriterFreetext : Rewriter
+    public class Freetext : Rewriter
     {
         public static string PrefixFreetext => "-FTSFREETEXTPREFIX-";
 
-        public RewriterFreetext() : base(PrefixFreetext)
+        public Freetext() : base(PrefixFreetext)
         {
         }
 

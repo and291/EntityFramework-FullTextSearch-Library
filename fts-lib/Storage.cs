@@ -17,8 +17,8 @@ namespace fts_lib
         {
             ActiveRewriters = new List<Rewriter>
             {
-                new RewriterContains(),
-                new RewriterFreetext()
+                new Contains(),
+                new Freetext()
             };
         }
 

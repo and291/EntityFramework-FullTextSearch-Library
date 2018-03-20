@@ -41,9 +41,9 @@ namespace UnitTests
             //TODO подумать над проверкой любого числа реврайтеров
             const string searchQuery = "search query";
             Assert.IsInstanceOfType(
-                FindRewriter(new RewriterContains().Wrap(searchQuery)), typeof(RewriterContains));
+                FindRewriter(new Contains().Wrap(searchQuery)), typeof(Contains));
             Assert.IsInstanceOfType(
-                FindRewriter(new RewriterFreetext().Wrap(searchQuery)), typeof(RewriterFreetext));
+                FindRewriter(new Freetext().Wrap(searchQuery)), typeof(Freetext));
             Assert.IsNull(FindRewriter(searchQuery));
 
             Assert.ThrowsException<ArgumentNullException>(() => Storage.Instance.FindRewriter(null));
