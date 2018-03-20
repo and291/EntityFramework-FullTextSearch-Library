@@ -11,9 +11,9 @@ namespace fts_lib.Predicates
         {
         }
 
-        protected override string RewriteParameterValue(string value)
+        protected override string Unwrap(string value)
         {
-            return $"FORMSOF (INFLECTIONAL, {base.RewriteParameterValue(value)})";
+            return $"FORMSOF (INFLECTIONAL, {base.Unwrap(value)})";
         }
 
         protected override string RewriteCommandText(string commandText, string parameterName)

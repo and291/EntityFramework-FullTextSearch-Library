@@ -15,7 +15,7 @@ namespace fts_lib.Model
 
         public void Rewrite(DbCommand command, DbParameter parameter)
         {
-            var value = RewriteParameterValue((string)parameter.Value);
+            var value = Unwrap((string)parameter.Value);
 
             parameter.Size = value.Length;
             parameter.DbType = DbType.AnsiStringFixedLength;
@@ -34,7 +34,7 @@ namespace fts_lib.Model
             return ValueWrapper.Wrap(Prefix, value);
         }
 
-        protected virtual string RewriteParameterValue(string value)
+        protected virtual string Unwrap(string value)
         {
             return ValueWrapper.Unwrap(Prefix, value);
         }
