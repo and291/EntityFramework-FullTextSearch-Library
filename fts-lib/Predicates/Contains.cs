@@ -1,19 +1,22 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 using fts_lib.Model;
 
 namespace fts_lib.Predicates
 {
-    public interface IContains { }
-
-    public class Contains : FtsParameter, IContains
+    public class Contains : FtsParameter
     {
         public Contains(string search) : base(search)
         {
         }
     }
 
-    public class RewriterContains : Rewriter, IContains
+    public class RewriterContains : Rewriter
     {
+        public RewriterContains(string prefix, Type type) : base(prefix, type)
+        {
+        }
+
         protected override string RewriteParameterValue(string value)
         {
             return $"FORMSOF (INFLECTIONAL, {base.RewriteParameterValue(value)})";

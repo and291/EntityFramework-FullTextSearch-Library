@@ -52,8 +52,7 @@
     <Compile Include="FtsInterceptor.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Model\FtsParameter.cs" />
-    <Compile Include="Model\Parent.cs" />
-    <Compile Include="Prefixes.cs" />
+    <Compile Include="Storage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Rewriter.cs" />
     <Compile Include="ValueWrapper.cs" />

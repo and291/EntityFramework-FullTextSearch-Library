@@ -4,11 +4,18 @@ using System.Data.Common;
 
 namespace fts_lib.Model
 {
-    public abstract class Rewriter : Parent
+    public abstract class Rewriter
     {
-        public bool IsContains(DbParameter parameter)
+        public string Prefix { get; }
+        public Type Type { get; }
+
+        protected Rewriter(string prefix, Type type)
         {
-            return parameter.Value.ToString().StartsWith($"\"{Prefix}");
+            Prefix = prefix;
+            Type = type;
+
+            //if (!typeof(Rewriter).GetInterfaces().Contains(type))
+              //  throw new ArgumentException();
         }
 
         public void Rewrite(DbCommand command, DbParameter parameter)
