@@ -7,15 +7,10 @@ namespace fts_lib.Model
     public abstract class Rewriter
     {
         public string Prefix { get; }
-        public Type Type { get; }
 
-        protected Rewriter(string prefix, Type type)
+        protected Rewriter(string prefix)
         {
             Prefix = prefix;
-            Type = type;
-
-            //if (!typeof(Rewriter).GetInterfaces().Contains(type))
-              //  throw new ArgumentException();
         }
 
         public void Rewrite(DbCommand command, DbParameter parameter)
@@ -32,6 +27,11 @@ namespace fts_lib.Model
             {
                 throw new Exception("FTS was not replaced on: " + commandText);
             }
+        }
+
+        public string Wrap(string value)
+        {
+            return ValueWrapper.Wrap(Prefix, value);
         }
 
         protected virtual string RewriteParameterValue(string value)

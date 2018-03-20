@@ -1,19 +1,13 @@
-﻿using System;
+﻿using fts_lib.Model;
 using System.Text.RegularExpressions;
-using fts_lib.Model;
 
 namespace fts_lib.Predicates
 {
-    public class Contains : FtsParameter
-    {
-        public Contains(string search) : base(search)
-        {
-        }
-    }
-
     public class RewriterContains : Rewriter
     {
-        public RewriterContains(string prefix, Type type) : base(prefix, type)
+        public static string PrefixContains => "-FTSCONTAINSPREFIX-";
+
+        public RewriterContains() : base(PrefixContains)
         {
         }
 

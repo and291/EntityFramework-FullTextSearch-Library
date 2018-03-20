@@ -41,9 +41,9 @@ namespace UnitTests
             //TODO подумать над проверкой любого числа реврайтеров
             const string searchQuery = "search query";
             Assert.IsInstanceOfType(
-                FindRewriter(new Contains(searchQuery).ToString()), typeof(RewriterContains));
+                FindRewriter(new RewriterContains().Wrap(searchQuery)), typeof(RewriterContains));
             Assert.IsInstanceOfType(
-                FindRewriter(new Freetext(searchQuery).ToString()), typeof(RewriterFreetext));
+                FindRewriter(new RewriterFreetext().Wrap(searchQuery)), typeof(RewriterFreetext));
             Assert.IsNull(FindRewriter(searchQuery));
 
             Assert.ThrowsException<ArgumentNullException>(() => Storage.Instance.FindRewriter(null));
@@ -53,17 +53,6 @@ namespace UnitTests
         {
             var parameter = new SqlParameter { Value = parameterValue };
             return Storage.Instance.FindRewriter(parameter);
-        }
-
-        [TestMethod]
-        public void GetCorrectPrefixForType()
-        {
-            var rewriters = Storage.Instance.ActiveRewriters;
-            foreach (var rewriter in rewriters)
-            {
-                var foundPrefix = Storage.Instance.GetPrefixForType(rewriter.Type);
-                Assert.AreEqual(rewriter.Prefix, foundPrefix);
-            }
         }
     }
 }
